@@ -1,0 +1,25 @@
+{
+  "name": "Oi Digital - Monitor de Tags",
+  "version": "0.1",
+  "description": "Ferramenta de apoio a validação de tags",
+  "permissions": ["activeTab", "webRequest", "webRequestBlocking", "*://*.google-analytics.com/*", "*://*.oracleoutsourcing.com/*"],
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "icons": { "32": "icon32.png",
+    "64": "icon64.png",
+    "128": "icon128.png" },
+  "content_scripts": [{
+    "matches": ["*://*.oi.com.br/*", "*://*.oracleoutsourcing.com/*"],
+    "all_frames": false,
+    "js":      ["scripts/content.js"],
+    "css":     ["styles/style.css"]
+}],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+    
+  },
+
+  "manifest_version": 2
+}
