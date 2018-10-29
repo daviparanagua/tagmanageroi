@@ -1,38 +1,33 @@
 #gaoi_analyzer {
     font-size: 12px !important;
     position:fixed;
-    bottom: 70px;
-    left: 10px;
+    bottom: 0;
+    right: 0px;
+    opacity: 0.8;
     min-width:200px;
     min-height:20px;
     z-index:999999;
-    border:6px solid #8f25e5;
     background-color: #DDD;
-    border-radius: 8px;
     padding: 8px;
     overflow:auto;
     max-height:40%;
-    box-shadow: 2px 5px rgba(50,50,50,0.5);
+    max-width:50%;
+    color: #000;
+    transition: opacity 0.3s, color 0.5s; 
 }
 
-#gaoi_analyzer.ga-analyzer-hidden {
-    font-size: 8px !important;
-    position:fixed;
-    bottom: 0px;
+#ga-oi-events, #gaoi_analyzer{
+    pointer-events: none;
+}
+
+#gaoi_analyzer:hover {
+    opacity: 1;
+    color: #111;
+}
+
+#gaoi_analyzer.ga-analyzer-left {
     left: 0px;
-    min-width:40px;
-    min-height:20px;
-    z-index:999999;
-    border-width:1px;
-    background-color: #DDD;
-    border-radius: 1px;
-    padding: 1px;
-    overflow:auto;
-}
-
-#gaoi_analyzer.ga-analyzer-right {
-    right: 10px;
-    left: auto;
+    right: auto;
 }
 
 #gaoi_analyzer a {
@@ -50,7 +45,8 @@
 }
 
 #gaoi_analyzer .ga-popup-title .right-menu a {
-    padding: 0 4px;
+    padding: 2px 4px;
+    pointer-events: auto;
 }
 
 #gaoi_analyzer.ga-analyzer-hidden .hidable {
@@ -62,16 +58,16 @@
 }
 
 #gaoi_analyzer.ga-analyzer-hidden .showable {
-    display: block;
+    display: inline-block;
 }
 
 #ga_oi_events th:not(:first-child) {
     min-width: 150px;
 }
 
-#ga_oi_events td, #ga_oi_events th  {
+#ga_oi_events td{
     font-size: 12px !important;
-    border:1px solid #FAFAFA;
+    border-bottom:1px solid #FAFAFA;
     padding: 2px 12px;
 }
 
@@ -85,4 +81,9 @@
 
 .ul_separator {
     color:#CCC;
+}
+
+.popup-tag {
+    position:absolute;
+
 }

@@ -1,8 +1,8 @@
 {
   "name": "Oi Digital - Monitor de Tags",
-  "version": "0.1",
+  "version": "0.12",
   "description": "Ferramenta de apoio a validação de tags",
-  "permissions": ["activeTab", "webRequest", "webRequestBlocking", "*://*.google-analytics.com/*", "*://*.oracleoutsourcing.com/*"],
+  "permissions": ["storage", "activeTab", "webRequest", "webRequestBlocking", "*://*.google-analytics.com/*", "*://*.oracleoutsourcing.com/*"],
   "browser_action": {
     "default_popup": "popup.html"
   },
