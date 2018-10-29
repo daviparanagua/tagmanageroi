@@ -4,7 +4,7 @@ let n = 0;
     
     let analyzer_popup = this.document.createElement('div');
     analyzer_popup.id = 'gaoi_analyzer';
-    analyzer_popup.innerHTML = '<div class="ga-popup-title"><span class="hidable">Monitor de eventos </span><div class="right-menu"><a id="ga_oi_events_close_popup" class="hidable">🗕</a><a id="ga_oi_events_open_popup" class="showable">🗖</a><a id="ga_oi_events_toggle_position">↔</a></div></div><table id="ga_oi_events" class="hidable"><thead><tr><th>N</th><th>Horário</th><th>Categoria</th><th>Ação</th><th>Rótulo</th></tr></thead></table>';
+    analyzer_popup.innerHTML = '<div class="ga-popup-title"><span class="hidable">Monitor de eventos </span><div class="right-menu"><a id="ga_oi_events_toggle_opacity" class="hidable">👁</a><a id="ga_oi_events_close_popup" class="hidable">🗕</a><a id="ga_oi_events_open_popup" class="showable">🗖</a><a id="ga_oi_events_toggle_position">↔</a></div></div><table id="ga_oi_events" class="hidable"><thead><tr><th>N</th><th>Horário</th><th>Categoria</th><th>Ação</th><th>Rótulo</th></tr></thead></table>';
     if(document.body){
         document.body.appendChild(analyzer_popup);
     } else {
@@ -36,6 +36,10 @@ document.querySelector('#ga_oi_events_open_popup').addEventListener('click', fun
 
 document.querySelector('#ga_oi_events_toggle_position').addEventListener('click', function(){
     document.querySelector('#gaoi_analyzer').classList.toggle('ga-analyzer-left');
+})
+
+document.querySelector('#ga_oi_events_toggle_opacity').addEventListener('click', function(){
+    document.querySelector('#gaoi_analyzer').classList.toggle('ga-analyzer-opaque');
 })
 
 function parseField(fieldText){

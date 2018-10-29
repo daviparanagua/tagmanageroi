@@ -16,9 +16,19 @@
     transition: opacity 0.3s, color 0.5s; 
 }
 
-#ga-oi-events, #gaoi_analyzer{
+#gaoi_analyzer{
     pointer-events: none;
 }
+
+#gaoi_analyzer.ga-analyzer-opaque {
+    pointer-events: auto;
+    opacity: 1;
+    color: #000;
+}
+
+#gaoi_analyzer.ga-analyzer-opaque #ga_oi_events_toggle_opacity{
+    font-weight: bold;
+} 
 
 #gaoi_analyzer:hover {
     opacity: 1;
