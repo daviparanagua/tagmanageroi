@@ -1,5 +1,9 @@
+console.log('starting...');
+
 chrome.webRequest.onBeforeRequest.addListener(
   function(info) {
+
+    console.log('listening...');
     
     let url = info.url
     let queryString = url.substring(url.indexOf('?') + 1 );

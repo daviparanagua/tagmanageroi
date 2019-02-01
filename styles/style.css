@@ -1,19 +1,60 @@
+#gaoi_analyzer html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
 #gaoi_analyzer {
-    font-size: 12px !important;
+    font-size: 17px !important;
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     position:fixed;
     bottom: 0;
     right: 0px;
     opacity: 0.8;
-    min-width:200px;
+    min-width:80px;
     min-height:20px;
     z-index:999999;
     background-color: #DDD;
     padding: 8px;
-    overflow:auto;
-    max-height:40%;
-    max-width:50%;
+    height:40%;
+    width:50%;
     color: #000;
     transition: opacity 0.3s, color 0.5s; 
+}
+
+div#gaoi_analyzer * {
+    font-size: 0.9em !important;
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+#gaoi_analyzer table,th,tr,td {
+    background: #DADADA !important;
+    font-weight: normal !important;
+}
+
+#gaoi_analyzer hr {
+    margin: 2px 0;
+}
+
+#gaoi-analyzer-table-wrapper {
+    width: 100%;
+    max-height: 90%;
+    overflow: auto;
 }
 
 #gaoi_analyzer{
@@ -46,7 +87,7 @@
 
 #gaoi_analyzer .ga-popup-title {
     font-size: 16px !important;
-    text-align:center;
+    text-align: center;
 }
 
 #gaoi_analyzer .ga-popup-title .right-menu {
@@ -54,9 +95,14 @@
     white-space: nowrap;
 }
 
-#gaoi_analyzer .ga-popup-title .right-menu a {
+#gaoi_analyzer .ga-popup-title .right-menu{
     padding: 2px 4px;
     pointer-events: auto;
+}
+
+#gaoi_analyzer.ga-analyzer-hidden {
+    height:40px;
+    width:40px;
 }
 
 #gaoi_analyzer.ga-analyzer-hidden .hidable {
@@ -71,29 +117,61 @@
     display: inline-block;
 }
 
-#ga_oi_events th:not(:first-child) {
-    min-width: 150px;
+#gaoi_analyzer table {
+    overflow-y:scroll;
+    height: 90%;
+    width: 100%;
 }
 
-#ga_oi_events td{
+#gaoi_analyzer table th{
+    text-align:left;
+    padding: 2px 12px;
+}
+
+
+#gaoi_analyzer table th:not(:first-child) {
+    min-width: 60px;
+}
+
+#gaoi_analyzer table td{
     font-size: 12px !important;
     border-bottom:1px solid #FAFAFA;
     padding: 2px 12px;
 }
 
-#ga_oi_events tr:hover {
+#gaoi_analyzer table tr:hover {
     background-color: #EEE;
 }
 
-#ga_oi_events_close_popup {
+#gaoi_analyzer table_close_popup {
     font-size: 0.8em;
 }
 
 .ul_separator {
     color:#CCC;
+    margin:auto 2px;
 }
 
 .popup-tag {
     position:absolute;
 
+}
+
+#gaoi_analyzer .page-info{
+    text-align: left;
+    font-weight: normal;
+    font-size:0.75em;
+}
+
+.separator {
+    padding: 0;
+    color: #BBB;
+}
+
+.current_view_e .view_p{
+    display:none;
+}
+
+.current_view_p .view_e{
+    display:none;
 }
