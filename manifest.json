@@ -1,8 +1,18 @@
 {
   "name": "Oi Digital - Monitor de Tags",
-  "version": "0.2",
+  "version": "0.23.0",
   "description": "Ferramenta de apoio a validação de tags",
-  "permissions": ["storage", "activeTab", "webRequest", "webRequestBlocking", "*://*.google-analytics.com/*", "*://*.oracleoutsourcing.com/*"],
+  "permissions": [
+    "storage",
+    "activeTab",
+    "webRequest",
+    "webRequestBlocking",
+    "*://*.google-analytics.com/",
+    "*://*.oracleoutsourcing.com/",
+    "*://*.interno/",
+    "*://controlemigracao.shiftinc.com.br/",
+    "*://*.oi.com.br/*"
+  ],
   "browser_action": {
     "default_popup": "popup.html"
   },
@@ -10,7 +20,13 @@
     "64": "icon64.png",
     "128": "icon128.png" },
   "content_scripts": [{
-    "matches": ["*://*.oi.com.br/*", "*://*.oracleoutsourcing.com/*"],
+    "matches": [
+      "*://*.oi.com.br/*",
+      "*://*.oracleoutsourcing.com/*",
+      "*://*.interno/*",
+      "*://controlemigracao.shiftinc.com.br/*"
+    ],
+    "run_at": "document_end",
     "all_frames": false,
     "js":      ["scripts/content.js"],
     "css":     ["styles/style.css"]
@@ -20,6 +36,6 @@
     "persistent": true
     
   },
-
+  "web_accessible_resources": ["databases/patterns.js","pageScript.js"],
   "manifest_version": 2
 }
