@@ -1,0 +1,29 @@
+#event-list {
+    font-size:11px;
+    font-family: monospace;
+}
+
+#event-list .event_body {
+    display: flex;
+}
+
+#event-list .category {
+    width: 30%;
+    padding:2px 4px;
+}
+
+#event-list .action {
+    width: 45%;
+    padding:2px 4px;
+}
+
+#event-list .label {
+    width: 25%;
+    padding:2px 4px;
+}
+
+.event {
+    background-color: #EFEFEF;
+    border: 1px solid #CCC;
+    margin:2px auto;
+}

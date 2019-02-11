@@ -1,11 +1,5 @@
 let n = 0;
 
-// Inject databases
-
-var s = document.createElement('script');
-s.src = chrome.extension.getURL('/databases/patterns.js');
-(document.head || document.documentElement).appendChild(s);
-
 // Inject pagescript
 var s = document.createElement('script');
 s.src = chrome.extension.getURL('pageScript.js');

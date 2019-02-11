@@ -1,6 +1,6 @@
 {
   "name": "Oi Digital - Monitor de Tags",
-  "version": "0.23.0",
+  "version": "0.24.1",
   "description": "Ferramenta de apoio a validação de tags",
   "permissions": [
     "storage",
@@ -36,6 +36,7 @@
     "persistent": true
     
   },
-  "web_accessible_resources": ["databases/patterns.js","pageScript.js"],
+  "web_accessible_resources": ["pageScript.js"],
+  "devtools_page": "devtools.html",
   "manifest_version": 2
 }
