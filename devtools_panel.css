@@ -1,3 +1,15 @@
+body {margin: 0; padding: 0;}
+
+table {width: 100%; border-collapse: collapse;}
+
+thead {
+    font-size: 11px;
+    background-color: #EFEFEF;
+    text-align: left;
+}
+
+th {font-weight:normal; padding:4px 2px;}
+
 #event-list {
     font-size:11px;
     font-family: monospace;
@@ -22,8 +34,31 @@
     padding:2px 4px;
 }
 
-.event {
-    background-color: #EFEFEF;
+.event, thead th {
     border: 1px solid #CCC;
-    margin:2px auto;
+}
+
+.thead th {
+    background-color: #EFEFEF;
+}
+
+.event.recent {
+    background-color: #FAFA66;
+}
+
+.fading {
+    transition: background-color 2s ease-out;
+}
+
+tr:hover, tr:hover td {
+    background-color: #E0E0E0;
+}
+
+tr.pageview, tr.pageview td{
+    background-color: #AAFFAA;
+}
+
+.menu {
+    padding:4px;
+    background-color: #EFEFEF;
 }

@@ -44,6 +44,7 @@ div#gaoi_analyzer * {
 
 #gaoi_analyzer table,th,tr,td {
     background: #DADADA !important;
+    transition: background-color 2s ease-out;
     font-weight: normal !important;
 }
 
@@ -174,4 +175,12 @@ div#gaoi_analyzer * {
 
 .current_view_p .view_e{
     display:none;
+}
+
+tr.recent, tr.recent td {
+    background-color: #FAFA66 !important;
+}
+
+tr:hover {
+    background-color: #FAFAFA;
 }
