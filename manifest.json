@@ -1,6 +1,6 @@
 {
   "name": "Oi Digital - Monitor de Tags",
-  "version": "0.26.0",
+  "version": "0.26.1",
   "description": "Ferramenta de apoio a validação de tags",
   "permissions": [
     "storage",

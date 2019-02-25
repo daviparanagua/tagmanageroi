@@ -9,7 +9,7 @@ GAfillPageData();
 
 function GAfillPageData(){
 
-    if(document.getElementById('#gaoi_analyzer')){
+    if(document.getElementById('gaoi_analyzer')){
 
         if(!window.document.hasOwnProperty('OiDatalayer')){
             document.querySelector('#gaoi-monitor-page-name').innerHTML = 'Datalayer não detectado'; 
