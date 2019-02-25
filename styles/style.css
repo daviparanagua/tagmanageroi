@@ -196,3 +196,21 @@ tr.ecommerce, tr.ecommerce td{
 tr:hover {
     background-color: #FAFAFA;
 }
+
+.ga_oi_analyzer_balloon.appeared {
+    opacity: 1;
+}
+
+.ga_oi_analyzer_balloon {
+    font-weight: normal;
+    font-size: 12px;
+    position: absolute;
+    min-width: 40px;
+    background: #EEE;
+    border: 1px solid #666;
+    transition: opacity 2s;
+    opacity: 0;
+    padding: 3px;
+    box-shadow: 2px 4px 5px 0px #888888;
+    border-radius:8px;
+}

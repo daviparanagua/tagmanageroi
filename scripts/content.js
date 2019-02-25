@@ -2,6 +2,8 @@ let n = 0;
 
 // Inject pagescript
 var s = document.createElement('script');
+var gaMouseX = 0;
+var gaMouseY = 0
 s.src = chrome.extension.getURL('pageScript.js');
 (document.head || document.documentElement).appendChild(s);
 //Our pageScript.js only add listener to window object, 
@@ -151,7 +153,12 @@ chrome.storage.sync.get(['show_monitor','show_monitor_info_dismissed'], (result)
             chrome.storage.sync.set({default_view: tab}, function() {});
         }
         
-    } // /If show monitor 
+    } // /If show monitor
+    
+    window.addEventListener('mousemove',(event)=>{
+        gaMouseX = event.clientX;     // Get the horizontal coordinate
+        gaMouseY = event.clientY;     // Get the vertical coordinate
+    })
 });
 
 
@@ -163,23 +170,41 @@ window.addEventListener('load',function(){
 chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
     n++;
     let data = request.data || {};
+    let ev_type = 'click'; 
     let ev_table = document.querySelector('#ga_oi_events tbody');
-    if(!ev_table){return false;} // Monitor não está ativado
 
     let tr = document.createElement('tr');
-    tr.className = "recent";
+    
+    if(data.ec == 'PageView'){tr.classList.add('pageview'); ev_type='pageview';}
+    if(data.ec == 'ecommerce'){tr.classList.add('ecommerce'); ev_type='ecommerce';}
+    if(data.ec == 'Midia'){tr.classList.add('midia'); ev_type='midia';}
+    
+    if(ev_table){
+        tr.className = "recent";
+        tr.innerHTML = '<td>'+n + '</td><td>' + new Date().toLocaleString('pt-BR',{ hour:'2-digit', minute: '2-digit' ,second: '2-digit' }) + '</td>' + '<td>' + parseField(data.ec) + '</td>' + '<td>' + parseField(data.ea) + '</td>' + '<td>' + parseField(data.el) + '</td>';
+        ev_table.insertBefore(tr,ev_table.firstChild);
+        setTimeout(()=>{tr.classList.remove("recent");}, 100);
+    }
 
-    if(data.ec == 'PageView'){tr.classList.add('pageview');}
-    if(data.ec == 'ecommerce'){tr.classList.add('ecommerce');}
-    if(data.ec == 'Midia'){tr.classList.add('midia');}
-
-    console.log(tr);
-
-    tr.innerHTML = '<td>'+n+'</td><td>' + new Date().toLocaleString('pt-BR',{ hour:'2-digit', minute: '2-digit' ,second: '2-digit' }) + '</td>' + '<td>' + parseField(data.ec) + '</td>' + '<td>' + parseField(data.ea) + '</td>' + '<td>' + parseField(data.el) + '</td>';
-    ev_table.insertBefore(tr,ev_table.firstChild);
-
-    setTimeout(()=>{tr.classList.remove("recent");}, 100);
-
+    // BALÃO
+    chrome.storage.sync.get(['show_balloons'],(result)=>{
+        if(result.show_balloons && ev_type == 'click'){
+            let balloon = document.createElement('div');
+            balloon.innerHTML = data.ec + '<br />' + data.ea + '<br />' + data.el;
+            balloon.style.right = (window.innerWidth - (window.scrollX + gaMouseX)) + 'px';
+            balloon.style.top = window.scrollY + gaMouseY + 'px';
+            balloon.className = 'ga_oi_analyzer_balloon';
+            balloon.classList.add('appeared');
+            document.body.appendChild(balloon);
+            setTimeout(()=>{
+                balloon.classList.remove('appeared');
+            },500)
+            setTimeout(()=>{
+                balloon.parentNode.removeChild(balloon);
+            },5000)
+        }
+    });
+    // /BALÃO
     sendResponse({data: data, success: true});
 });
 
