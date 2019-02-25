@@ -14,7 +14,7 @@
     "*://*.oi.com.br/*"
   ],
   "browser_action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup/popup.html"
   },
   "icons": { "32": "icon32.png",
     "64": "icon64.png",
