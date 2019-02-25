@@ -43,7 +43,7 @@ th {font-weight:normal; padding:4px 2px;}
 }
 
 .event.recent {
-    background-color: #FAFA66;
+    background-color: #FAFA66 !important;
 }
 
 .fading {
@@ -56,6 +56,14 @@ tr:hover, tr:hover td {
 
 tr.pageview, tr.pageview td{
     background-color: #AAFFAA;
+}
+
+tr.midia, tr.midia td{
+    background-color: #AAAAFF;
+}
+
+tr.ecommerce, tr.ecommerce td{
+    background-color: #FFAAAA;
 }
 
 .menu {

@@ -154,8 +154,6 @@ chrome.storage.sync.get(['show_monitor','show_monitor_info_dismissed'], (result)
     } // /If show monitor 
 });
 
-    
-
 
 window.addEventListener('load',function(){
     let event = new CustomEvent('GET_DATALAYER');
@@ -170,6 +168,13 @@ chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
 
     let tr = document.createElement('tr');
     tr.className = "recent";
+
+    if(data.ec == 'PageView'){tr.classList.add('pageview');}
+    if(data.ec == 'ecommerce'){tr.classList.add('ecommerce');}
+    if(data.ec == 'Midia'){tr.classList.add('midia');}
+
+    console.log(tr);
+
     tr.innerHTML = '<td>'+n+'</td><td>' + new Date().toLocaleString('pt-BR',{ hour:'2-digit', minute: '2-digit' ,second: '2-digit' }) + '</td>' + '<td>' + parseField(data.ec) + '</td>' + '<td>' + parseField(data.ea) + '</td>' + '<td>' + parseField(data.el) + '</td>';
     ev_table.insertBefore(tr,ev_table.firstChild);
 

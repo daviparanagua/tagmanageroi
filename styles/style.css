@@ -43,7 +43,7 @@ div#gaoi_analyzer * {
 }
 
 #gaoi_analyzer table,th,tr,td {
-    background: #DADADA !important;
+    background: #DADADA;
     transition: background-color 2s ease-out;
     font-weight: normal !important;
 }
@@ -179,6 +179,18 @@ div#gaoi_analyzer * {
 
 tr.recent, tr.recent td {
     background-color: #FAFA66 !important;
+}
+
+tr.pageview, tr.pageview td{
+    background-color: #AAFFAA;
+}
+
+tr.midia, tr.midia td{
+    background-color: #AAAAFF;
+}
+
+tr.ecommerce, tr.ecommerce td{
+    background-color: #FFAAAA;
 }
 
 tr:hover {

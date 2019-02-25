@@ -21,6 +21,7 @@ backgroundPageConnection.onMessage.addListener(function (message) {
 
     if(data.ec == 'PageView'){cell.classList.add('pageview');}
     if(data.ec == 'ecommerce'){cell.classList.add('ecommerce');}
+    if(data.ec == 'Midia'){cell.classList.add('midia');}
 
     //cellString += '<div class="event"><div class="title">' + new Date().toLocaleString('pt-BR',{ hour:'2-digit', minute: '2-digit' ,second: '2-digit' }) + '</div>';
     //cellString += '<div class="event_body"><div class="category">' + parseField(data.ec) + '</div>' + '<div class="action">' + parseField(data.ea) + '</div>' + '<div class="label">' + parseField(data.el) + '</div></div></div>';
