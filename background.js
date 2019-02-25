@@ -1,9 +1,7 @@
-console.log('starting...');
 window.devtoolsPorts = {};
 
 chrome.webRequest.onBeforeRequest.addListener(
   function(info) {
-    console.log('listening...');
     let port = window.devtoolsPorts[info.tabId];
     
     let url = info.url
