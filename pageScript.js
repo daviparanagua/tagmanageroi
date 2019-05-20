@@ -12,7 +12,6 @@ function GAfillPageData(){
     if(document.getElementById('gaoi_analyzer')){
 
         if(!window.document.hasOwnProperty('OiDatalayer')){
-            document.querySelector('#gaoi-monitor-page-name').innerHTML = 'Datalayer não detectado'; 
             dataLoaded = false;
             
         } else {
@@ -23,15 +22,6 @@ function GAfillPageData(){
             let ev_table = document.querySelector('#ga_oi_produts tbody');
 
             dataLoaded = true;
-
-            if(dl.hasOwnProperty('pageInfo')){
-                pageInfo = (dl.pageInfo ||  dl.page);
-                document.querySelector('#gaoi-monitor-page-name').innerHTML = (pageInfo.pageName || '&lt;nenhum&gt;');
-                document.querySelector('#gaoi-monitor-URL').innerHTML = (pageInfo.URL || '&lt;nenhum&gt;');
-            } else {
-                document.querySelector('#gaoi-monitor-page-name').innerHTML = '&lt;nenhum&gt;';
-                document.querySelector('#gaoi-monitor-URL').innerHTML = '&lt;nenhum&gt;';
-            }
 
             if(dl.hasOwnProperty('productInfo') && dl.productInfo.hasOwnProperty('products')){
                 products = dl.productInfo.products;

@@ -34,8 +34,7 @@ chrome.storage.sync.get(['show_monitor','show_monitor_info_dismissed'], (result)
                 <a id="ga_oi_events_close">🗙</a> 
             </div>
             <div class="page-info hidable">
-                <div class="page-info-topic">Nome da página: <strong id="gaoi-monitor-page-name"></strong></div>
-                <div class="page-info-topic">URL:  <strong id="gaoi-monitor-URL"></strong></div>
+                Monitor de Tags
             </div>
             <hr class="hidable" />
         </div>
@@ -161,7 +160,6 @@ chrome.storage.sync.get(['show_monitor','show_monitor_info_dismissed'], (result)
     })
 });
 
-
 window.addEventListener('load',function(){
     let event = new CustomEvent('GET_DATALAYER');
     window.dispatchEvent(event);
@@ -174,13 +172,14 @@ chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
     let ev_table = document.querySelector('#ga_oi_events tbody');
 
     let tr = document.createElement('tr');
+    tr.className = "recent";
+
     
     if(data.ec == 'PageView'){tr.classList.add('pageview'); ev_type='pageview';}
     if(data.ec == 'ecommerce'){tr.classList.add('ecommerce'); ev_type='ecommerce';}
     if(data.ec == 'Midia'){tr.classList.add('midia'); ev_type='midia';}
     
     if(ev_table){
-        tr.className = "recent";
         tr.innerHTML = '<td>'+n + '</td><td>' + new Date().toLocaleString('pt-BR',{ hour:'2-digit', minute: '2-digit' ,second: '2-digit' }) + '</td>' + '<td>' + parseField(data.ec) + '</td>' + '<td>' + parseField(data.ea) + '</td>' + '<td>' + parseField(data.el) + '</td>';
         ev_table.insertBefore(tr,ev_table.firstChild);
         setTimeout(()=>{tr.classList.remove("recent");}, 100);
@@ -188,11 +187,16 @@ chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
 
     // BALÃO
     chrome.storage.sync.get(['show_balloons'],(result)=>{
-        if(result.show_balloons && ev_type == 'click'){
+        if(result.show_balloons){
             let balloon = document.createElement('div');
             balloon.innerHTML = data.ec + '<br />' + data.ea + '<br />' + data.el;
-            balloon.style.right = (window.innerWidth - (window.scrollX + gaMouseX)) + 'px';
-            balloon.style.top = window.scrollY + gaMouseY + 'px';
+            if(ev_type == 'click'){
+                balloon.style.right = (window.innerWidth - (window.scrollX + gaMouseX)) + 'px';
+                balloon.style.top = window.scrollY + gaMouseY + 'px';
+            } else {
+                balloon.style.left = '0px';
+                balloon.style.bottom = '0px';
+            }
             balloon.className = 'ga_oi_analyzer_balloon';
             balloon.classList.add('appeared');
             document.body.appendChild(balloon);
