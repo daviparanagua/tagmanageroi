@@ -19,7 +19,7 @@ chrome.storage.sync.get(['show_monitor','show_monitor_info_dismissed'], (result)
         analyzer_popup.id = 'gaoi_analyzer';
         analyzer_popup.classList.add('current_view_e');
 
-        analyzer_popup.innerHTML = `
+        let analyzer_popup_html = `
         <div class="ga-popup-title">
             <div class="right-menu">
                 <a id="ga_oi_events_view_p" class="hidable view_e">P</a>
@@ -43,7 +43,7 @@ chrome.storage.sync.get(['show_monitor','show_monitor_info_dismissed'], (result)
 
         if(result.show_monitor_info_dismissed){
 
-            analyzer_popup.innerHTML += `
+            analyzer_popup_html += `
 
                 <table id="ga_oi_events" class="hidable view_e">
                     <thead>
@@ -65,7 +65,7 @@ chrome.storage.sync.get(['show_monitor','show_monitor_info_dismissed'], (result)
                 </table>
             `;
         } else {
-            analyzer_popup.innerHTML += `
+            analyzer_popup_html += `
                 <div>
                     <h1>O monitor de eventos não está mais aqui</h1>
                     <p style="margin:8px 0">Para mostrá-lo novamente, clique no ícone da extensão na barra de extensões do navegador e marque a opção &quot;Exibir monitor na página&quot;</p>
@@ -74,9 +74,11 @@ chrome.storage.sync.get(['show_monitor','show_monitor_info_dismissed'], (result)
             `;
         }
 
-            analyzer_popup.innerHTML += `
-                </div>
-            `;
+        analyzer_popup_html += `
+            </div>
+        `;
+
+        analyzer_popup.innerHTML = analyzer_popup_html;
         
         if(document.body){
             document.body.appendChild(analyzer_popup);
